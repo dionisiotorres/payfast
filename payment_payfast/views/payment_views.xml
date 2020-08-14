@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="acquirer_form_payfast" model="ir.ui.view">
+            <field name="name">acquirer.form.payfast</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//group[@name="acquirer"]' position='after'>
+                    <group attrs="{'invisible': [('provider', '!=', 'payfast')]}">
+                        <group>
+                            <field name='merchant_key' password="True"/>
+                            <field name="merchant_id" password="True"/>
+                        </group><br/><br/><br/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="transaction_form_mygate" model="ir.ui.view">
+            <field name="name">acquirer.transaction.form.mygate</field>
+            <field name="model">payment.transaction</field>
+            <field name="inherit_id" ref="payment.transaction_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//form/sheet/group' position='after'>
+                    <notebook>
+                        <page string="Payfast TX Details" attrs="{'invisible': [('provider', '!=', 'payfast')]}">
+                            <group>
+                                <field name="payfast_txn_id"/>
+                            </group>
+                        </page>
+                        <page string="Request" groups="base.group_no_one" attrs="{'invisible': [('provider', '!=', 'payfast')]}">
+                            <group>
+                                <field name="request_payload"/>
+                            </group>
+                        </page>
+                        <page string="Response" groups="base.group_no_one" attrs="{'invisible': [('provider', '!=', 'payfast')]}">
+                            <group>
+                                <field name="response_payload"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

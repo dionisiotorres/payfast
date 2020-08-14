@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <template id="payfast_acquirer_button">
+            <div>
+                <input type="hidden" name="data_set" t-att-data-action-url="tx_url" data-remove-me=""/>
+                <input type="hidden" name="merchant_id" t-att-value="merchant_id"/>
+                <input type="hidden" name="merchant_key" t-att-value="merchant_key"/>
+                <input type="hidden" name="return_url" t-att-value="return_url"/>
+                <input type="hidden" name="cancel_url" t-att-value="cancel_url"/>
+                <input type="hidden" name="notify_url" t-att-value="notify_url"/>
+                <input type="hidden" name="amount" t-att-value="amount"/>
+                <input type="hidden" name="item_name" t-att-value="item_name"/>
+                <input type="hidden" name="custom_str1" t-att-value="custom_str1"/>
+            </div>
+        </template>
+    </data>
+</odoo>
